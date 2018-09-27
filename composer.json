@@ -4,19 +4,33 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "William Durand",
-            "email": "william.durand1@gmail.com"
+            "name": "Kévin Dunglas",
+            "email": "dunglas@gmail.com",
+            "homepage": "https://dunglas.fr"
         },
+        {
+            "name": "Vidy Videni",
+            "email": "vidy.videni@gmail.com"
+        }
     ],
     "require": {
         "php": "^5.5|^7.0",
         "symfony/framework-bundle": "~2.3 || ~3.0 || ~4.0",
-
-         "videni/rest": "^2.4@dev",
+        "videni/hateoas-bundle": "^1.4@dev",
+        "videni/hateoas": "^2.12@dev",
+        "videni/rest": "^2.4@dev"
     },
-     "repositories": [
+    "repositories": [
         {
             "url": "https://github.com/videni/rest.git",
+            "type": "vcs"
+        },
+        {
+            "url": "https://github.com/videni/BazingaHateoasBundle.git",
+            "type": "vcs"
+        },
+        {
+            "url": "https://github.com/videni/Hateoas.git",
             "type": "vcs"
         }
     ],
@@ -24,7 +38,9 @@
         "phpunit/phpunit": "~5"
     },
     "autoload": {
-        "psr-4": { "Videni\\Bundle\\RestBundle\\": "" }
+        "psr-4": {
+            "Videni\\Bundle\\RestBundle\\": ""
+        }
     },
     "config": {
         "bin-dir": "bin"
