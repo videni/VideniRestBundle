@@ -11,12 +11,12 @@
 
 declare(strict_types=1);
 
-namespace ApiPlatform\Core\Bridge\Symfony\Validator\EventListener;
+namespace Videni\Bundle\RestBundle\Validator\EventListener;
 
-use ApiPlatform\Core\Bridge\Symfony\Validator\Exception\ValidationException;
+use Videni\Bundle\RestBundle\Validator\Exception\ValidationException;
 use ApiPlatform\Core\Metadata\Resource\Factory\ResourceMetadataFactoryInterface;
 use ApiPlatform\Core\Util\RequestAttributesExtractor;
-use ApiPlatform\Core\Validator\EventListener\ValidateListener as MainValidateListener;
+use Videni\Bundle\RestBundle\EventListener\ValidateListener as MainValidateListener;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
 use Symfony\Component\Validator\Validator\ValidatorInterface;

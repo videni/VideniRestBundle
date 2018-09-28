@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace ApiPlatform\Core\Bridge\Symfony\Routing;
+namespace Videni\Bundle\RestBundle\Routing;
 
 use ApiPlatform\Core\Api\IdentifiersExtractor;
 use ApiPlatform\Core\Api\IdentifiersExtractorInterface;
@@ -34,7 +34,6 @@ use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
 use Symfony\Component\Routing\Exception\ExceptionInterface as RoutingExceptionInterface;
 use Symfony\Component\Routing\RouterInterface;
-use Hateoas\Expression\ExpressionEvaluator;
 use Symfony\Component\PropertyAccess\PropertyAccessor;
 
 /**
@@ -51,7 +50,6 @@ final class IriConverter implements IriConverterInterface
     private $router;
     private $identifiersExtractor;
     private $propertyAccessor;
-    private $expressionEvaluator;
 
     public function __construct(PropertyNameCollectionFactoryInterface $propertyNameCollectionFactory, PropertyMetadataFactoryInterface $propertyMetadataFactory, ItemDataProviderInterface $itemDataProvider, RouteNameResolverInterface $routeNameResolver, RouterInterface $router, PropertyAccessorInterface $propertyAccessor = null, IdentifiersExtractorInterface $identifiersExtractor = null, SubresourceDataProviderInterface $subresourceDataProvider = null, IdentifierConverterInterface $identifierConverter = null)
     {
@@ -111,26 +109,11 @@ final class IriConverter implements IriConverterInterface
         throw new ItemNotFoundException(sprintf('Item not found for "%s".', $iri));
     }
 
-    public function setExpressionEvaluator($expressionEvaluator)
-    {
-        $this->expressionEvaluator = $expressionEvaluator;
-    }
-
     /**
      * {@inheritdoc}
      */
     public function getIriFromItem($item, int $referenceType = UrlGeneratorInterface::ABS_PATH, $context = []): string
     {
-        if ($routeName =  $this->propertyAccessor->getValue($context, '[iri][route]')) {
-            $parameters = $this->propertyAccessor->getValue($context, '[iri][parameters]');
-
-            return $this->router->generate(
-                $routeName,
-                !empty($parameters)? $this->expressionEvaluator->evaluateArray($parameters, $item): [],
-                $referenceType
-            );
-        }
-
         $resourceClass = $this->getObjectClass($item);
         $routeName = $this->routeNameResolver->getRouteName($resourceClass, OperationType::ITEM);
 

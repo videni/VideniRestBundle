@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace ApiPlatform\Core\Bridge\Symfony\Routing;
+namespace Videni\Bundle\RestBundle\Routing;
 
 use ApiPlatform\Core\Api\OperationType;
 use ApiPlatform\Core\Exception\InvalidResourceException;
@@ -51,13 +51,12 @@ final class ApiLoader extends Loader
     private $formats;
     private $resourceClassDirectories;
     private $subresourceOperationFactory;
-    private $graphqlEnabled;
     private $entrypointEnabled;
     private $docsEnabled;
 
-    public function __construct(KernelInterface $kernel, ResourceNameCollectionFactoryInterface $resourceNameCollectionFactory, ResourceMetadataFactoryInterface $resourceMetadataFactory, OperationPathResolverInterface $operationPathResolver, ContainerInterface $container, array $formats, array $resourceClassDirectories = [], SubresourceOperationFactoryInterface $subresourceOperationFactory = null, bool $graphqlEnabled = false, bool $entrypointEnabled = true, bool $docsEnabled = true)
+    public function __construct(KernelInterface $kernel, ResourceNameCollectionFactoryInterface $resourceNameCollectionFactory, ResourceMetadataFactoryInterface $resourceMetadataFactory, OperationPathResolverInterface $operationPathResolver, ContainerInterface $container, array $formats, array $resourceClassDirectories = [], SubresourceOperationFactoryInterface $subresourceOperationFactory = null,  bool $entrypointEnabled = true, bool $docsEnabled = true)
     {
-        $this->fileLoader = new XmlFileLoader(new FileLocator($kernel->locateResource('@ApiPlatformBundle/Resources/config/routing')));
+        $this->fileLoader = new XmlFileLoader(new FileLocator($kernel->locateResource('@VideniRestBundle/Resources/config/routing')));
         $this->resourceNameCollectionFactory = $resourceNameCollectionFactory;
         $this->resourceMetadataFactory = $resourceMetadataFactory;
         $this->operationPathResolver = $operationPathResolver;
@@ -65,7 +64,6 @@ final class ApiLoader extends Loader
         $this->formats = $formats;
         $this->resourceClassDirectories = $resourceClassDirectories;
         $this->subresourceOperationFactory = $subresourceOperationFactory;
-        $this->graphqlEnabled = $graphqlEnabled;
         $this->entrypointEnabled = $entrypointEnabled;
         $this->docsEnabled = $docsEnabled;
     }
@@ -161,16 +159,6 @@ final class ApiLoader extends Loader
 
         if ($this->docsEnabled) {
             $routeCollection->addCollection($this->fileLoader->load('docs.xml'));
-        }
-
-        if ($this->graphqlEnabled) {
-            $graphqlCollection = $this->fileLoader->load('graphql.xml');
-            $graphqlCollection->addDefaults(['_graphql' => true]);
-            $routeCollection->addCollection($graphqlCollection);
-        }
-
-        if (isset($this->formats['jsonld'])) {
-            $routeCollection->addCollection($this->fileLoader->load('jsonld.xml'));
         }
     }
 

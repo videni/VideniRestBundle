@@ -39,7 +39,7 @@ final class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('api_platform');
+        $rootNode = $treeBuilder->root('videni_rest');
 
         $rootNode
             ->children()
@@ -110,22 +110,6 @@ final class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
-
-                ->arrayNode('graphql')
-                    ->canBeEnabled()
-                    ->addDefaultsIfNotSet()
-                    ->children()
-                        ->booleanNode('enabled')->defaultValue(class_exists(GraphQL::class))->info('To enable or disable GraphQL.')->end()
-                        ->arrayNode('graphiql')
-                            ->canBeEnabled()
-                            ->addDefaultsIfNotSet()
-                            ->children()
-                                ->booleanNode('enabled')->defaultValue(class_exists(GraphQL::class) && class_exists(TwigBundle::class))->info('To enable or disable GraphiQL.')->end()
-                            ->end()
-                        ->end()
-                    ->end()
-                ->end()
-
                 ->arrayNode('swagger')
                     ->addDefaultsIfNotSet()
                     ->children()

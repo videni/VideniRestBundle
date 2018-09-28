@@ -37,7 +37,6 @@
             <argument>%api_platform.formats%</argument>
             <argument>%api_platform.resource_class_directories%</argument>
             <argument type="service" id="api_platform.subresource_operation_factory" />
-            <argument>%api_platform.graphql.enabled%</argument>
             <argument>%api_platform.enable_entrypoint%</argument>
             <argument>%api_platform.enable_docs%</argument>
 
@@ -69,9 +68,6 @@
             <argument type="service" id="api_platform.identifiers_extractor.cached" />
             <argument type="service" id="api_platform.subresource_data_provider" on-invalid="ignore" />
             <argument type="service" id="api_platform.identifier.converter" on-invalid="ignore" />
-            <call method="setExpressionEvaluator">
-                <argument type="service" id="api_platform.expression.evaluator" />
-            </call>
         </service>
         <service id="ApiPlatform\Core\Api\IriConverterInterface" alias="api_platform.iri_converter" />
 
@@ -100,7 +96,6 @@
         <service id="api_platform.serializer.normalizer.item" class="ApiPlatform\Core\Serializer\ItemNormalizer" public="false">
             <argument type="service" id="api_platform.metadata.property.name_collection_factory" />
             <argument type="service" id="api_platform.metadata.property.metadata_factory" />
-            <argument type="service" id="api_platform.iri_converter" />
             <argument type="service" id="api_platform.resource_class_resolver" />
             <argument type="service" id="api_platform.property_accessor" />
             <argument type="service" id="api_platform.name_converter" on-invalid="ignore" />

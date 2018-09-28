@@ -17,7 +17,6 @@
 
         <service id="api_platform.jsonapi.normalizer.entrypoint" class="ApiPlatform\Core\JsonApi\Serializer\EntrypointNormalizer" public="false">
             <argument type="service" id="api_platform.metadata.resource.metadata_factory" />
-            <argument type="service" id="api_platform.iri_converter" />
             <argument type="service" id="api_platform.router" />
 
             <tag name="serializer.normalizer" priority="32" />
@@ -26,15 +25,12 @@
         <service id="api_platform.jsonapi.normalizer.collection" class="ApiPlatform\Core\JsonApi\Serializer\CollectionNormalizer" public="false">
             <argument type="service" id="api_platform.resource_class_resolver" />
             <argument>%api_platform.collection.pagination.page_parameter_name%</argument>
-
-
             <tag name="serializer.normalizer" priority="16" />
         </service>
 
         <service id="api_platform.jsonapi.normalizer.item" class="ApiPlatform\Core\JsonApi\Serializer\ItemNormalizer" public="false">
             <argument type="service" id="api_platform.metadata.property.name_collection_factory" />
             <argument type="service" id="api_platform.metadata.property.metadata_factory" />
-            <argument type="service" id="api_platform.iri_converter" />
             <argument type="service" id="api_platform.resource_class_resolver" />
             <argument type="service" id="api_platform.property_accessor" />
             <argument type="service" id="api_platform.jsonapi.name_converter.reserved_attribute_name" />

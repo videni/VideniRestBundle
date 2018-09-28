@@ -11,9 +11,9 @@
 
 declare(strict_types=1);
 
-namespace ApiPlatform\Core\Bridge\Symfony\Validator\EventListener;
+namespace Videni\Bundle\RestBundle\Validator\EventListener;
 
-use ApiPlatform\Core\Bridge\Symfony\Validator\Exception\ValidationException;
+use Videni\Bundle\RestBundle\Validator\Exception\ValidationException;
 use ApiPlatform\Core\Util\ErrorFormatGuesser;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;

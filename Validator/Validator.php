@@ -14,7 +14,6 @@ declare(strict_types=1);
 namespace Videni\Bundle\RestBundle\Validator;
 
 use Videni\Bundle\RestBundle\Validator\Exception\ValidationException;
-use ApiPlatform\Core\Validator\ValidatorInterface;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Validator\Constraints\GroupSequence;
 use Symfony\Component\Validator\Validator\ValidatorInterface as SymfonyValidatorInterface;

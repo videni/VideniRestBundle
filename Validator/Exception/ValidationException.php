@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace ApiPlatform\Core\Bridge\Symfony\Validator\Exception;
+namespace Videni\Bundle\RestBundle\Validator\Exception;
 
 use ApiPlatform\Core\Validator\Exception\ValidationException as BaseValidationException;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
