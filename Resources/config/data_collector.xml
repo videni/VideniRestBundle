@@ -12,7 +12,7 @@
 
             <tag
                 name="data_collector"
-                template="@ApiPlatform/DataCollector/request.html.twig"
+                template="@VideniRest/DataCollector/request.html.twig"
                 id="api_platform.data_collector.request"
                 priority="334"
             />

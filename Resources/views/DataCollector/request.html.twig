@@ -12,7 +12,7 @@
 {% block toolbar %}
     {% set icon %}
         {% set status_color = collector.counters.ignored_filters|default(false) ? 'yellow' : 'default' %}
-        {{ include('@ApiPlatform/DataCollector/api-platform.svg') }}
+        {{ include('@VideniRest/DataCollector/api-platform.svg') }}
     {% endset %}
 
     {% set text %}
@@ -35,7 +35,7 @@
     {# This left-hand menu appears when using the full-screen profiler. #}
     <span class="label{{ collector.resourceClass ? '' : ' disabled' }}">
         <span class="icon">
-            {{ include('@ApiPlatform/DataCollector/api-platform.svg') }}
+            {{ include('@VideniRest/DataCollector/api-platform.svg') }}
         </span>
         <strong>API Platform</strong>
     </span>

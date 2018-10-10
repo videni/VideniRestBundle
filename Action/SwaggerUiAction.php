@@ -98,7 +98,7 @@ final class SwaggerUiAction
 
         $documentation = new Documentation($this->resourceNameCollectionFactory->create(), $this->title, $this->description, $this->version, $this->formats);
 
-        return new Response($this->twig->render('@ApiPlatform/SwaggerUi/index.html.twig', $this->getContext($request, $documentation)));
+        return new Response($this->twig->render('@VideniRest/SwaggerUi/index.html.twig', $this->getContext($request, $documentation)));
     }
 
     /**
